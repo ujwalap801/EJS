@@ -1,0 +1,72 @@
+
+Interpolation refers to embedding expressions into marked up text
+Using Interpolation
+Syntax
+In EJS, you use the <%= ... %> syntax for interpolation. This allows you to output the value of a variable into the HTML.
+
+Example
+Here’s a simple example of using EJS interpolation:
+
+1. Create a View
+Create a file named home.ejs in the views directory:
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Welcome</title>
+</head>
+<body>
+    <h1>Hello, <%= name %>!</h1>
+    <p>You are <%= age %> years old.</p>
+</body>
+</html>
+
+
+2. Render the View
+In your Express route, render the view and pass data to it:
+
+app.get("/home", (req, res) => {
+    const user = {
+        name: "Ujwala",
+        age: 24
+    };
+    res.render("home", user); // Pass the user object to the view
+});
+
+
+Output
+When you access http://localhost:8080/home, the output will be:
+Hello, Ujwala!
+You are 24 years old.
+
+
+Escaped vs Unescaped Interpolation
+Escaped Interpolation: <%= variable %> outputs the value escaped, making it safe for HTML.
+Unescaped Interpolation: <%- variable %> outputs the value unescaped, allowing HTML tags to be rendered.
+
+
+<% ... %>: This tag executes JavaScript code but does not output anything to the HTML.
+
+
+
+Executing JavaScript with `<% ... %>`
+
+The `<% ... %>` tag allows you to execute JavaScript code without rendering any output to the HTML. This is useful for control flow statements, loops, or any logic you want to run without displaying results directly.
+
+ Example
+
+```html
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Scriptlet Example</title>
+</head>
+<body>
+    <h1>Numbers:</h1>
+    <ul>
+        <% for (let i = 1; i <= 5; i++) { %>
+            <li><%= i %></li>
+        <% } %>
+    </ul>
+</body>
+</html>

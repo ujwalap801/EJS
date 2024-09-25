@@ -1,0 +1,29 @@
+Serving static files refers to delivering files such as images, CSS, JavaScript, or other resources that do not change dynamically from a server to a client in a web application. Here's how static files can be served using different technologies:
+
+1. Using Express (Node.js)
+In Express, static files can be served by using the built-in middleware express.static. Here's an example:
+
+javascript
+Copy code
+const express = require('express');
+const path = require('path');
+const app = express();
+
+// Serve static files from the 'public' directory
+app.use(express.static(path.join(__dirname, 'public')));
+
+app.get('/', (req, res) => {
+  res.send('Home Page');
+});
+
+app.listen(3000, () => {
+  console.log('Server is running on port 3000');
+});
+Place your static files (HTML, CSS, JS, images) inside the public directory.
+This will automatically serve all static files from http://localhost:3000/yourfile.
+
+
+
+Includes refer to mechanisms for including one file or piece of content within another. This concept is widely used across various programming languages and frameworks to promote code reuse and modularity
+
+<%- include("includes/head.ejs") %>
